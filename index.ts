@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import jwt from "jwt-express";
-import { startOfDatabase } from "./utils/db_handler";
-import { errorHandler } from "./utils/error_handler";
-import { keyToken } from "./utils/jwt";
+import { startOfDatabase } from "./src/utils/db_handler";
+import { errorHandler } from "./src/utils/error_handler";
+import { keyToken } from "./src/utils/jwt";
 
 startOfDatabase();
 
