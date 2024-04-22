@@ -1,16 +1,22 @@
-import mongoose from "mongoose";
+import {Sequelize} from 'sequelize'
 
-const host = "localhost"
-const port = "27017"
-const database = "univ-express"
+export const sequelize = new Sequelize('promocare','root','', {
+    host: '127.0.0.1',
+    dialect: 'mariadb',
+    dialectOptions: {
+      timezone: 'Etc/GMT-2',
+    },
+    logging: false
+})
 
-const db = mongoose.connect(`mongodb://${host}:${port}/${database}`);
 
 export const startOfDatabase = async () => {
-  db.then(() => {
+  sequelize
+      .sync({})
+      .then(() => {
           console.log('Database and tables have been synchronized');
       })
-      .catch((err: Error) => {
+      .catch((err) => {
           console.error('An error occurred while synchronizing the database:', err);
       });
 };
