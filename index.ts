@@ -26,4 +26,4 @@ app.use((_req, res) => {
 
 app.use(errorHandler);
 
-app.listen(3000,'127.0.0.1', () =>{ console.log(`Notre application Node est démarrée sur : https://helpother.fr`);});
+app.listen(3000,'127.0.0.1', () =>{ console.log(`Notre application Node est démarrée sur : https://helpother.fr ou http://localhost:3000`);});
