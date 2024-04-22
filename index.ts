@@ -1,0 +1,28 @@
+import express from "express";
+import bodyParser from "body-parser";
+import jwt from "jwt-express";
+import { errorHandler } from "./utils/error_handler";
+import { keyToken } from "./utils/jwt";
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(
+  jwt.init(keyToken, {
+    cookies: false,
+  }),
+);
+
+app.get("/", (_req, res) => {
+  res.json({ message: "The API is working"});
+});
+
+app.use((_req, res) => {
+  res.status(404).json({ message: "This route does not exist" });
+});
+
+app.use(errorHandler);
+
+app.listen(3000, () => {
+  console.log("listening on port 3000!");
+});
