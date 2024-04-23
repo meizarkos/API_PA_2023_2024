@@ -66,15 +66,10 @@ export const UserModel = (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        status: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-        },
         role: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue:0
+            defaultValue:"user"
         },
     });
 };

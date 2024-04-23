@@ -79,15 +79,10 @@ export const CompanyModel = (sequelize: Sequelize) => {
                 }
             }
         },
-        status: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-        },
         role: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue:0
+            defaultValue:"ban"   // all companies start as ban then the admin (iOS side will validate them)
         },
     });
 };

@@ -38,7 +38,7 @@ export const ticketModel = (sequelize: Sequelize) => {
         status: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            defaultValue: 0
+            defaultValue: 0   // 0 = unsolved 1 = solved
         },
     });
 };
