@@ -4,6 +4,9 @@ import jwt from "jwt-express";
 import { startOfDatabase } from "./src/utils/db_handler";
 import { errorHandler } from "./src/utils/error_handler";
 import { keyToken } from "./src/utils/jwt";
+import * as models from "./src/models";
+
+models
 
 startOfDatabase();
 
