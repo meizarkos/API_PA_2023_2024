@@ -43,6 +43,16 @@ export const ticketModel = (sequelize: Sequelize) => {
     });
 };
 
+export type ITicket = {
+    uuid: string;
+    title: string;
+    description: string;
+    status: number;
+    createdAt: Date;
+    updatedAt: Date;
+    creatorId: string;
+}
+
 export const Ticket = ticketModel(sequelize);
 
 Ticket.hasMany(Response,{
