@@ -2,7 +2,7 @@
   "name": "nodejs_todos",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "main.ts",
   "scripts": {
     "dev": "nodemon --watch .",
     "start": "tsc --outDir dist && node dist/index.js"

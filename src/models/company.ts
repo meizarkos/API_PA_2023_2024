@@ -2,8 +2,8 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 import { Ticket } from './ticket';
 
-export const UserModel = (sequelize: Sequelize) => {
-    return sequelize.define('User', {
+export const CompanyModel = (sequelize: Sequelize) => {
+    return sequelize.define('Companie', {
         //User donne users in db
         uuid: {
             type: DataTypes.UUID,
@@ -36,35 +36,48 @@ export const UserModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Password is required" }
             }
         },
-        firstName: {
+        companyName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 //validateur  => valide que ce n'est pas vide
-                notEmpty: { msg: "First name is required" },
-                notNull: { msg: "First name is required" },
+                notEmpty: { msg: "The company name is required" },
+                notNull: { msg: "The company name is required" },
                 len: {
                     args: [1, 128], // Minimum and maximum length
-                    msg: "First name must be less than 128 characters"
-                }
-            }
-        },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                //validateur  => valide que ce n'est pas vide
-                notEmpty: { msg: "Last name is required" },
-                notNull: { msg: "Last name is required" },
-                len: {
-                    args: [1, 128], // Minimum and maximum length
-                    msg: "Last name must be less than 128 characters"
+                    msg: "The company name must be less than 128 characters"
                 }
             }
         },
         phone: {
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        siretNumber:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                //validateur  => valide que ce n'est pas vide
+                notEmpty: { msg: "Your SIRET number is required" },
+                notNull: { msg: "Your SIRET number is required" },
+                len: {
+                    args: [14,14], // Minimum and maximum length
+                    msg: "Your SIRET number must be 14 characters long"
+                }
+            }
+        },
+        location:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                //validateur  => valide que ce n'est pas vide
+                notEmpty: { msg: "Your location is required" },
+                notNull: { msg: "Your location is required" },
+                len: {
+                    args: [15,1000], // Minimum and maximum length
+                    msg: "Your location is required must be less than 1000 characters"
+                }
+            }
         },
         status: {
             type: DataTypes.INTEGER,
@@ -79,8 +92,8 @@ export const UserModel = (sequelize: Sequelize) => {
     });
 };
 
-export const User = UserModel(sequelize);
+export const Company = CompanyModel(sequelize);
 
-User.hasMany(Ticket,{
+Company.hasMany(Ticket,{
     foreignKey:'creatorId',
 })
