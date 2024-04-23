@@ -14,13 +14,13 @@ export const login = (app: Application) => {
                 return;
             }
 
-            if(user && user.role==="admin"){
-              if (!user || !(await bcrypt.compare(password, user.password))) {
+            if(user && user.getDataValue('role')==="admin"){
+              if (!user || !(await bcrypt.compare(password, user.getDataValue('password')))) {
                 return res.status(401).json({ message: "Email ou mot de passe incorrect" });
               }
             }
 
-            const token = res.jwt({role: user.role, id: user.uuid})
+            const token = res.jwt({role: user.getDataValue('role'), id: user.getDataValue('uuid')})
             res.status(200).send({ message: "Connecté", token });
         } catch (e: unknown) {
             res.status(500).send({ error: "Internal server error"});
