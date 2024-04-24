@@ -2,7 +2,7 @@ import { User } from '../../models';
 import { Application, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 
-export const login = (app: Application) => {
+export const loginAdmin = (app: Application) => {
     app.post('/loginAdmin', async (req: Request, res: Response) => {
         const email = req.body.email;
         const password = req.body.password;

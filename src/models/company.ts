@@ -74,8 +74,8 @@ export const CompanyModel = (sequelize: Sequelize) => {
                 notEmpty: { msg: "Your location is required" },
                 notNull: { msg: "Your location is required" },
                 len: {
-                    args: [15,1000], // Minimum and maximum length
-                    msg: "Your location is required must be less than 1000 characters"
+                    args: [1,1000], // Minimum and maximum length
+                    msg: "Your location is required and must be less than 1000 characters"
                 }
             }
         },
