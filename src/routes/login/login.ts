@@ -16,7 +16,7 @@ async function login(req:Request,res:Response,model :ModelStatic<Model<any, any>
             }
 
             if (!valeur || !(await bcrypt.compare(password, valeur.getDataValue('password')))) {
-                return res.status(401).json({ message: "Email ou mot de passe incorrect" });
+                return res.status(401).json({ message: "Wrong credentials" });
             }
 
             const token = res.jwt({role: valeur.getDataValue('role'), id: valeur.getDataValue('uuid')})

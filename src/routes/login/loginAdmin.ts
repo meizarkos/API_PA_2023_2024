@@ -16,7 +16,7 @@ export const loginAdmin = (app: Application) => {
 
             if(user && user.getDataValue('role')==="admin"){
               if (!user || !(await bcrypt.compare(password, user.getDataValue('password')))) {
-                return res.status(401).json({ message: "Email ou mot de passe incorrect" });
+                return res.status(401).json({ message: "Wrong credentials" });
               }
             }
 
