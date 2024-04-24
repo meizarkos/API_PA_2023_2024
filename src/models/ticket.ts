@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
-import { User,Company } from './index';
+import { Response } from './index';
 
 export const ticketModel = (sequelize: Sequelize) => {
     return sequelize.define('Ticket', {
@@ -40,7 +40,12 @@ export const ticketModel = (sequelize: Sequelize) => {
             allowNull: false,
             defaultValue: 0   // 0 = unsolved 1 = solved
         },
+        creatorId:{
+            type: DataTypes.UUID,
+            allowNull:false
+        }
     });
 };
 
 export const Ticket = ticketModel(sequelize);
+

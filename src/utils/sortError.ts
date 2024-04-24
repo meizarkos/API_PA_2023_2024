@@ -10,9 +10,9 @@ export function getAllErrors(e: ValidationError | UniqueConstraintError, res: Re
             jsonResult[table] = error.message;
         }
     });
-    res.status(400).json({
+    res.status(400).json(
         jsonResult
-    });
+    );
 }
 
 export function findPath(e: ValidationError | UniqueConstraintError, tables: string[]): boolean {

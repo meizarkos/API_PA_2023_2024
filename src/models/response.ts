@@ -20,11 +20,11 @@ export const responseModel = (sequelize: Sequelize) => {
                 }
             }
         },
+        ticketId:{
+            type: DataTypes.UUID,
+            allowNull : false
+        }
     });
 };
 
 export const Response = responseModel(sequelize);
-
-Response.belongsTo(Response, {
-    foreignKey: 'parentResponseId'
-});
