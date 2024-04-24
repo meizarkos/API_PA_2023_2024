@@ -10,9 +10,9 @@ async function register(req:Request,res:Response,model :ModelStatic<Model<any, a
         const salt = await bcrypt.genSalt(10)
         req.body.password =  await bcrypt.hash(req.body.password,salt)
 
-        if(req.body.role == "admin"){
-            return res.status(404).json({message:"No admin creation allow"})
-        }
+        // if(req.body.role == "admin"){
+        //     return res.status(404).json({message:"No admin creation allow"})
+        // }
 
         await model.create(req.body)
 
