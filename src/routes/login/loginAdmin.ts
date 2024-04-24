@@ -21,7 +21,7 @@ export const loginAdmin = (app: Application) => {
             }
 
             const token = res.jwt({role: user.getDataValue('role'), id: user.getDataValue('uuid')})
-            res.status(200).send({ message: "Connecté", token });
+            res.status(200).send({ message: "Connecté", token:token.token });
         } catch (e: unknown) {
             res.status(500).send({ error: "Internal server error"});
         }
