@@ -1,6 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
-import { Ticket } from './ticket';
 
 export const UserModel = (sequelize: Sequelize) => {
     return sequelize.define('User', {
@@ -74,18 +73,4 @@ export const UserModel = (sequelize: Sequelize) => {
     });
 };
 
-export type IUser = {
-    uuid: string;
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    phone: string;
-    role: string;
-}
-
 export const User = UserModel(sequelize);
-
-User.hasMany(Ticket,{
-    foreignKey:'creatorId',
-})
