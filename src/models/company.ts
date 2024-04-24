@@ -1,6 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
-import { Ticket } from './ticket';
 
 export const CompanyModel = (sequelize: Sequelize) => {
     return sequelize.define('Companie', {
@@ -88,7 +87,3 @@ export const CompanyModel = (sequelize: Sequelize) => {
 };
 
 export const Company = CompanyModel(sequelize);
-
-Company.hasMany(Ticket,{
-    foreignKey:'creatorId',
-})

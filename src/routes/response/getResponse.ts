@@ -1,6 +1,6 @@
 import { Response as ResponseModel} from '../../models';
 import { Application, Request, Response } from 'express';
-import { classByOlder } from '../tickets';
+import { classByOlder } from '../../utils';
 
 export const get_response_of_a_ticket= (app: Application) => {
   app.get('/response/:ticketId', async (req: Request, res: Response) => {
