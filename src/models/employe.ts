@@ -1,8 +1,8 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 
-export const CompanyModel = (sequelize: Sequelize) => {
-    return sequelize.define('Companie', {
+export const EmployeModel = (sequelize: Sequelize) => {
+    return sequelize.define('Employe', {
         //User donne users in db
         uuid: {
             type: DataTypes.UUID,
@@ -35,33 +35,42 @@ export const CompanyModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Password is required" }
             }
         },
-        companyName: {
+        firstName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 //validateur  => valide que ce n'est pas vide
-                notEmpty: { msg: "The company name is required" },
-                notNull: { msg: "The company name is required" },
+                notEmpty: { msg: "Your first name is required" },
+                notNull: { msg: "Your first name is required" },
                 len: {
                     args: [1, 128], // Minimum and maximum length
-                    msg: "The company name must be less than 128 characters"
+                    msg: "Your first must be less than 128 characters"
                 }
             }
         },
-        phone: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        siretNumber:{
+        lastName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 //validateur  => valide que ce n'est pas vide
-                notEmpty: { msg: "Your SIRET number is required" },
-                notNull: { msg: "Your SIRET number is required" },
+                notEmpty: { msg: "Last name is required" },
+                notNull: { msg: "Last name is required" },
                 len: {
-                    args: [14,14], // Minimum and maximum length
-                    msg: "Your SIRET number must be 14 characters long"
+                    args: [1, 128], // Minimum and maximum length
+                    msg: "Last name must be less than 128 characters"
+                }
+            }
+        },
+        RIB:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                //validateur  => valide que ce n'est pas vide
+                notEmpty: { msg: "The RIB is required" },
+                notNull: { msg: "The RIB is required" },
+                len: {
+                    args: [14,34], // Minimum and maximum length
+                    msg: "The RIB must be 14 characters long and less than 34"
                 }
             }
         },
@@ -81,9 +90,19 @@ export const CompanyModel = (sequelize: Sequelize) => {
         role: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue:"ban"   // all companies start as ban then the admin (iOS side will validate them)
+            defaultValue:"employe"   // all companies start as ban then the admin (iOS side will validate them)
         },
+        ticketSolved:{
+            type: DataTypes.NUMBER,
+            allowNull: false,
+            defaultValue:0
+        },
+        numberOfDaysOff:{
+            type:DataTypes.NUMBER,
+            allowNull:false,
+            defaultValue:0
+        }
     });
 };
 
-export const Company = CompanyModel(sequelize);
+export const Employe = EmployeModel(sequelize);
