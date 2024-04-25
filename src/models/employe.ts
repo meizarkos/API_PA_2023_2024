@@ -3,7 +3,6 @@ import { sequelize } from '../utils/db_handler';
 
 export const EmployeModel = (sequelize: Sequelize) => {
     return sequelize.define('Employe', {
-        //User donne users in db
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -17,7 +16,6 @@ export const EmployeModel = (sequelize: Sequelize) => {
                 msg: 'This email adress is already use'
             },
             validate: {
-                //validateur  => valide que ce n'est pas vide
                 notEmpty: { msg: "Email is a required field"},
                 notNull: { msg: "Email is a required field" },
                 len: {
@@ -93,12 +91,12 @@ export const EmployeModel = (sequelize: Sequelize) => {
             defaultValue:"employe"   // all companies start as ban then the admin (iOS side will validate them)
         },
         ticketSolved:{
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue:0
         },
         numberOfDaysOff:{
-            type:DataTypes.NUMBER,
+            type:DataTypes.INTEGER,
             allowNull:false,
             defaultValue:0
         }
