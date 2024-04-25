@@ -45,9 +45,3 @@ export const patchRoute = (app: Application, config: CrudAdmin) => {
         patch(res,req,config,req.params.uuid)
     });
 };
-
-export const patchRouteActuel = (app: Application, config: CrudAdmin) => {
-    app.patch(`${config.route}Actuel`,jwt.active(), async (req: Request, res: Response) => {
-        patch(res,req,config,req.jwt.payload.id)
-    });
-};

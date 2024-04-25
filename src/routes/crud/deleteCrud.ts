@@ -25,10 +25,3 @@ export const deleteRoute = (app: Application, config: CrudAdmin) => {
         deleteFunc(res,req,config,req.params.uuid)
     });
 };
-
-
-export const deleteRouteActuel = (app: Application, config: CrudAdmin) => {
-    app.delete(`${config.route}Actuel`, jwt.active(),async (req: Request, res: Response) => {
-        deleteFunc(res,req,config,req.jwt.payload.id)
-    });
-};

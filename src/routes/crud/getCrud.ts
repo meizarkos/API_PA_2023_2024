@@ -43,24 +43,3 @@ export const getRoute = (app: Application, config: CrudAdmin) => {
         }
     });
 };
-
-
-export const getActuelRoute = (app: Application, config: CrudAdmin) => {
-    app.get(`${config.route}Actuel`,jwt.active(), async (req: Request, res: Response) => {
-        try {
-            const item = await config.model.findByPk(req.jwt.payload.id);
-
-            if (!item) {
-                res.status(404).json({ message: `Item not found in ${config.route}` });
-                return;
-            }
-
-            res.status(200).json({ message: `Item found in ${config.route}`, item });
-        } catch (e: unknown) {
-            res.status(500).json({
-                error: 'Internal Server Error',
-                message: `Error fetching item from ${config.route}`
-            });
-        }
-    });
-};
