@@ -19,4 +19,4 @@ export const TeamEmployeModel = (sequelize: Sequelize) => {
     });
 };
 
-export const TeamEmploye = TeamEmployeModel(sequelize);
+export const EmployeTeam = TeamEmployeModel(sequelize);

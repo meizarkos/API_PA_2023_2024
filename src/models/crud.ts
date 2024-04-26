@@ -38,3 +38,13 @@ export const employe: CrudAdmin = {
     forbidden: ['uuid']
 }
 
+export const team: CrudAdmin = {
+    model:models.Team,
+    route: '/team'
+}
+
+export const employe_team: CrudAdmin = {
+    model: models.EmployeTeam,
+    route: '/employeTeam'
+}
+
