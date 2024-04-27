@@ -1,6 +1,5 @@
 import { Application, Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
-import jwt from "jwt-express";
 
 export const getAllRoute = (app: Application, config: CrudAdmin) => {
     app.get(config.route, async (req: Request, res: Response) => {

@@ -4,7 +4,7 @@ import * as models from './index';
 export type CrudAdmin = {
     model: ModelStatic<Model<any, any>>;
     route: string;
-    forbidden?: Array<string>;
+    forbidden: Array<string>;
     noReturn?: Array<string>;
 };
 
@@ -40,11 +40,13 @@ export const employe: CrudAdmin = {
 
 export const team: CrudAdmin = {
     model:models.Team,
-    route: '/team'
+    route: '/team',
+    forbidden: ['uuid']
 }
 
 export const employe_team: CrudAdmin = {
     model: models.EmployeTeam,
-    route: '/employeTeam'
+    route: '/employeTeam',
+    forbidden: ['uuid']
 }
 

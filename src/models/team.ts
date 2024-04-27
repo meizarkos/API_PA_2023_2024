@@ -11,6 +11,7 @@ export const TeamModel = (sequelize: Sequelize) => {
         teamName: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 //validateur  => valide que ce n'est pas vide
                 notEmpty: { msg: "Team name is required" },

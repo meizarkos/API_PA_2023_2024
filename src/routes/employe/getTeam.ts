@@ -4,7 +4,7 @@ import { Application, Request, Response } from 'express';
 export const getAllTeamFromAnEmploye = (app: Application) => {
   app.get('/teamEmploye/:employeId', async (req: Request, res: Response) => {
     try {
-      const employeTeams = await EmployeTeam.findAll({where:{employeId:req.params.teamId}})
+      const employeTeams = await EmployeTeam.findAll({where:{employeId:req.params.employeId}})
       const teamIds = employeTeams.map(employeTeam => employeTeam.getDataValue('teamId'));
       const teams = await Team.findAll({ where: { uuid: teamIds }});
       res.status(200).json(teams);

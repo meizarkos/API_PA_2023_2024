@@ -6,7 +6,7 @@ export const deleteEmploye = (app: Application) => {
     try {
       await Employe.destroy({where:{uuid:req.params.employeId}})
       await EmployeTeam.destroy({where:{employeId:req.params.employeId}})
-      res.status(200).json("Item delete with success");
+      res.status(200).json({message:"Item delete with success"});
     } catch (e: unknown) {
       console.log(e)
       res.status(500).send({ error: "Internal server error" });

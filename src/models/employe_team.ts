@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 
 export const TeamEmployeModel = (sequelize: Sequelize) => {
-    return sequelize.define('Team', {
+    return sequelize.define('EmployeTeam', {
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,
