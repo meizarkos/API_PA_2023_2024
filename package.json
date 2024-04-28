@@ -5,7 +5,7 @@
   "main": "main.ts",
   "scripts": {
     "dev": "nodemon --watch .",
-    "start": "tsc --outDir dist && node dist/index.js",
+    "start": "tsc --outDir dist && node dist/main.js",
     "build": "tsc --outDir dist"
   },
   "author": "",
