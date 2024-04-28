@@ -5,7 +5,8 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "rootDir": "."
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*","main.ts"]
 }
