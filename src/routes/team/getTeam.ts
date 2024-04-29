@@ -7,7 +7,6 @@ export const getTeam = (app: Application) => {
       const teams = await Team.findAll();
       const teamsFinal = await Promise.all(teams.map(async team => {
         const employeTeams = await EmployeTeam.findAll({where:{teamId:team.getDataValue('uuid')}});
-        console.log(employeTeams)
         const numberOfEmploye = employeTeams.length;
         const teamData = team.get();
         return {
