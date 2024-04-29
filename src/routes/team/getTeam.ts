@@ -1,6 +1,5 @@
 import { Team,EmployeTeam } from '../../models';
 import { Application, Request, Response } from 'express';
-import { team } from '../../models/crud';
 
 export const getTeam = (app: Application) => {
   app.get('/employeTeam', async (req: Request, res: Response) => {
@@ -8,11 +7,12 @@ export const getTeam = (app: Application) => {
       const teams = await Team.findAll();
       const teamsFinal = await Promise.all(teams.map(async team => {
         const employeTeams = await EmployeTeam.findAll({where:{teamId:team.getDataValue('uuid')}});
-        const number = employeTeams.length;
+        console.log(employeTeams)
+        const numberOfEmploye = employeTeams.length;
         const teamData = team.get();
         return {
           ...teamData,
-          numberEmploye:number
+          numberOfEmploye
         }
       }));
       res.status(200).json(teamsFinal);
