@@ -11,13 +11,15 @@ export type CrudAdmin = {
 export const company: CrudAdmin = {
     model: models.Company,
     route: '/companies',
-    forbidden: ['uuid']
+    forbidden: ['uuid'],
+    noReturn: ['password']
 };
 
 export const user: CrudAdmin = {
     model: models.User,
     route: '/users',
-    forbidden: ['uuid']
+    forbidden: ['uuid'],
+    noReturn: ['password']
 };
 
 export const ticket: CrudAdmin = {
@@ -35,7 +37,8 @@ export const response: CrudAdmin = {
 export const employe: CrudAdmin = {
     model: models.Employe,
     route: '/employe',
-    forbidden: ['uuid']
+    forbidden: ['uuid'],
+    noReturn: ['password']
 }
 
 export const team: CrudAdmin = {
