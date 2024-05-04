@@ -41,8 +41,6 @@ export const AnnonceModel = (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                notEmpty: { msg: "A location is required" },
-                notNull: { msg: "A location is required" },
                 len: {
                   args: [0, 500],
                   msg: "Location must be less than 500 characters"
