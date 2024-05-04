@@ -1,5 +1,6 @@
 import { Model, ModelStatic } from 'sequelize';
 import * as models from './index';
+import e from 'express';
 
 export type CrudAdmin = {
     model: ModelStatic<Model<any, any>>;
@@ -50,6 +51,66 @@ export const team: CrudAdmin = {
 export const employe_team: CrudAdmin = {
     model: models.EmployeTeam,
     route: '/employeTeam',
+    forbidden: ['uuid']
+}
+
+export const reunion: CrudAdmin = {
+    model: models.Meeting,
+    route: '/reunion',
+    forbidden: ['uuid']
+}
+
+export const invite: CrudAdmin = {
+    model: models.Invite,
+    route: '/invite',
+    forbidden: ['uuid']
+}
+
+export const leave: CrudAdmin = {
+    model: models.Leave,
+    route: '/leave',
+    forbidden: ['uuid']
+}
+
+export const assignation: CrudAdmin = {
+    model: models.Assignation,
+    route: '/assignation',
+    forbidden: ['uuid']
+}
+
+export const situation: CrudAdmin = {
+    model: models.Situation,
+    route: '/situation',
+    forbidden: ['uuid']
+}
+
+export const invoice: CrudAdmin = {
+    model: models.Invoice,
+    route: '/invoice',
+    forbidden: ['uuid']
+}
+
+export const conversation: CrudAdmin = {
+    model: models.Conversation,
+    route: '/conversation',
+    forbidden: ['uuid']
+}
+
+export const avis: CrudAdmin = {
+    model: models.Avis,
+    route: '/avis',
+    forbidden: ['uuid']
+}
+
+export const annonce: CrudAdmin = {
+    model: models.Annonce,
+    route: '/annonce',
+    forbidden: ['uuid']
+}
+
+export const offer: CrudAdmin = {
+    model: models.Offer,
+    route: '/offer',
     forbidden: ['uuid']
 }
 
