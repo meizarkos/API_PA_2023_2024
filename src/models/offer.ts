@@ -8,19 +8,19 @@ export const OfferModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        annonceId:{
+        annonce_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
-        situationId:{
+        situation_id:{
             type: DataTypes.UUID,
             allowNull: true,
         },
-        userId:{
+        user_id:{
           type: DataTypes.UUID,
           allowNull: false,
         },
-        dateStart:{
+        date_start:{
             type: DataTypes.DATE,
             allowNull: false,
             validate: {
@@ -28,11 +28,11 @@ export const OfferModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Date start is required"},
             }
         },
-        dateEnd:{
+        date_end:{
             type: DataTypes.DATE,
             allowNull: true,
         },
-        timeStart:{
+        time_start:{
             type: DataTypes.TIME,
             allowNull: false,
             validate: {
@@ -40,7 +40,7 @@ export const OfferModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Time start is required"},
             }
         },
-        timeEnd:{
+        time_end:{
             type: DataTypes.TIME,
             allowNull: false,
             validate: {

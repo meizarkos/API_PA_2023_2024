@@ -8,11 +8,11 @@ export const InviteModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        reunionId:{
+        reunion_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
-        inviteId:{
+        invite_id:{
             type: DataTypes.UUID,
             allowNull: false,
         }

@@ -22,7 +22,7 @@ export const MeetingModel = (sequelize: Sequelize) => {
                 },
             }
         },
-        startTime: {
+        start_time: {
             type: DataTypes.DATE,
             allowNull: false,
             validate: {
@@ -30,7 +30,7 @@ export const MeetingModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Start time is required" }
             }
         },
-        endTime: {
+        end_time: {
             type: DataTypes.DATE,
             allowNull: false,
             validate: {

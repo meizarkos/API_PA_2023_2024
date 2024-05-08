@@ -9,7 +9,7 @@ export const AnnonceModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        companyId:{
+        company_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
@@ -80,7 +80,7 @@ export const AnnonceModel = (sequelize: Sequelize) => {
             allowNull: false,
             defaultValue: "ok",
         },
-        viewTime:{
+        view_time:{
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0,

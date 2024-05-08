@@ -33,7 +33,7 @@ export const EmployeModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Password is required" }
             }
         },
-        firstName: {
+        first_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -46,7 +46,7 @@ export const EmployeModel = (sequelize: Sequelize) => {
                 }
             }
         },
-        lastName: {
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -59,7 +59,7 @@ export const EmployeModel = (sequelize: Sequelize) => {
                 }
             }
         },
-        RIB:{
+        rib:{
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -90,12 +90,12 @@ export const EmployeModel = (sequelize: Sequelize) => {
             allowNull: false,
             defaultValue:"employe"   // all companies start as ban then the admin (iOS side will validate them)
         },
-        ticketSolved:{
+        ticket_solved:{
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue:0
         },
-        numberOfDaysOff:{
+        number_of_days_off:{
             type:DataTypes.INTEGER,
             allowNull:false,
             defaultValue:0

@@ -8,7 +8,7 @@ export const SituationModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        idUser: {
+        id_user: {
             type: DataTypes.UUID,
             allowNull: false,
         },

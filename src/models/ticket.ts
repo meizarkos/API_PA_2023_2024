@@ -40,7 +40,7 @@ export const ticketModel = (sequelize: Sequelize) => {
             allowNull: false,
             defaultValue: 0   // 0 = unsolved 1 = solved
         },
-        creatorId:{
+        creator_id:{
             type: DataTypes.UUID,
             allowNull:false
         }

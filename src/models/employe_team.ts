@@ -8,11 +8,11 @@ export const TeamEmployeModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        teamId: {
+        team_id: {
             type: DataTypes.UUID,
             allowNull:false
         },
-        employeId: {
+        employe_id: {
             type: DataTypes.UUID,
             allowNull:false
         }

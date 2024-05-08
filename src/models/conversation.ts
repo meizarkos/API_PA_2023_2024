@@ -8,15 +8,15 @@ export const ConversationModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        senderId:{
+        sender_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
-        targetId:{
+        target_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
-        annonceId:{
+        annonce_id:{
           type: DataTypes.UUID,
           allowNull: false,
         },
