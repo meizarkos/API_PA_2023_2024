@@ -9,7 +9,7 @@ export const responseModel = (sequelize: Sequelize) => {
             defaultValue: DataTypes.UUIDV4
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 notEmpty: { msg: "Description is a required field"},
