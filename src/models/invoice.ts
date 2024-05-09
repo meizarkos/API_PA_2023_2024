@@ -8,19 +8,19 @@ export const InvoiceModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        userId:{
+        user_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
-        propositionId:{
+        proposition_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
-        pricePayed:{
+        price_payed:{
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        priceStillToPay:{
+        price_still_to_pay:{
             type: DataTypes.FLOAT,
             allowNull: true,
         },

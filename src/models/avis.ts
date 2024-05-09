@@ -8,11 +8,11 @@ export const AvisModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        userId:{
+        user_id:{
             type: DataTypes.UUID,
             allowNull: false,
         },
-        annonceId:{
+        annonce_id:{
           type: DataTypes.UUID,
           allowNull: false,
         },

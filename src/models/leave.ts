@@ -8,11 +8,11 @@ export const LeaveModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        idEmploye: {
+        id_employe: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        startDate: {
+        start_date: {
             type: DataTypes.DATE,
             allowNull: false,
             validate: {
@@ -20,7 +20,7 @@ export const LeaveModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Start time is required" }
             }
         },
-        endDate: {
+        end_date: {
             type: DataTypes.DATE,
             allowNull: false,
             validate: {

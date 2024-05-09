@@ -35,7 +35,7 @@ export const CompanyModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Password is required" }
             }
         },
-        companyName: {
+        company_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -52,7 +52,7 @@ export const CompanyModel = (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        siretNumber:{
+        siret_number:{
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

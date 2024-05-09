@@ -8,11 +8,11 @@ export const AssignationModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        idCible: {
+        id_cible: {
             type: DataTypes.UUID,
             allowNull: false,
         },
-        idTicket: {
+        id_ticket: {
             type: DataTypes.UUID,
             allowNull: false,
         },

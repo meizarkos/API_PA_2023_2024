@@ -20,7 +20,7 @@ export const responseModel = (sequelize: Sequelize) => {
                 }
             }
         },
-        ticketId:{
+        ticket_id:{
             type: DataTypes.UUID,
             allowNull : false
         }

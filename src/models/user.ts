@@ -36,7 +36,7 @@ export const UserModel = (sequelize: Sequelize) => {
                 notNull: { msg: "Password is required" }
             }
         },
-        firstName: {
+        first_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -49,7 +49,7 @@ export const UserModel = (sequelize: Sequelize) => {
                 }
             }
         },
-        lastName: {
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

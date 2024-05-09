@@ -8,7 +8,7 @@ export const TeamModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
-        teamName: {
+        team_name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
