@@ -23,7 +23,7 @@ export const ticketModel = (sequelize: Sequelize) => {
             }
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 //validateur  => valide que ce n'est pas vide

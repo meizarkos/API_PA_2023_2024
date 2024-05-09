@@ -21,7 +21,7 @@ export const ConversationModel = (sequelize: Sequelize) => {
           allowNull: false,
         },
         message:{
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 notEmpty: { msg: "It cannot be empty" },
