@@ -10,10 +10,10 @@ export const get_all_employe_with_a_status = (app: Application) => {
         const dataValue = employe.get();
         const isInTheTeam = await EmployeTeam.findOne({where:{employeId:uuid,teamId:req.params.teamId}})
         if(isInTheTeam){
-          return {...dataValue, isInTheTeam:true}
+          return {...dataValue, is_in_the_team:true}
         }
         else{
-          return {...dataValue, isInTheTeam:false}
+          return {...dataValue, is_in_the_team:false}
         }
       }));
       res.status(200).json(employe);
