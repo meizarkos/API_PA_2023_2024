@@ -1,4 +1,4 @@
-import { User } from '../../models';
+import { Employe, User } from '../../models';
 import { Application, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 
@@ -7,7 +7,7 @@ export const loginAdmin = (app: Application) => {
         const email = req.body.email;
         const password = req.body.password;
         try {
-            const user = await User.findOne({where:{ email }});
+            const user = await Employe.findOne({where:{ email }});
 
             if (!user) {
                 res.status(400).send({ message: "Wrong credentials" });
