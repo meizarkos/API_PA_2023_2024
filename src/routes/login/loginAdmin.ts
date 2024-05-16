@@ -1,4 +1,4 @@
-import { Employe, User } from '../../models';
+import { Employe } from '../../models';
 import { Application, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 

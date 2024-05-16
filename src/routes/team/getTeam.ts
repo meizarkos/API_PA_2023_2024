@@ -2,7 +2,7 @@ import { Team,EmployeTeam } from '../../models';
 import { Application, Request, Response } from 'express';
 
 export const getTeam = (app: Application) => {
-  app.get('/employeTeam', async (req: Request, res: Response) => {
+  app.get('/employeTeamNumber', async (req: Request, res: Response) => {
     try {
       const teams = await Team.findAll();
       const teamsFinal = await Promise.all(teams.map(async team => {
