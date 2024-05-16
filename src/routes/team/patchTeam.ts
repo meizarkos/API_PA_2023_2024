@@ -9,11 +9,11 @@ export const addAndDeleteToATeam = (app: Application) => {
       const idsDeletedString = req.query.idsDelete as string;
       const idsToDelete = idsDeletedString.split(',')
       if(idsToDelete.length > 0){
-        await EmployeTeam.destroy({where:{teamId:req.params.teamId,employeId:idsToDelete}});
+        await EmployeTeam.destroy({where:{team_id:req.params.teamId,employe_id:idsToDelete}});
       }
       if(ids.length > 0){
         ids.forEach(async id => {
-          await EmployeTeam.create({teamId:req.params.teamId,employeId:id})
+          await EmployeTeam.create({team_id:req.params.teamId,employe_id:id})
         });
       }
       
