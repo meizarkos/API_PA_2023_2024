@@ -5,7 +5,7 @@ export const getIfNameIsOk = (app: Application) => {
   app.get('/teamName/:teamName', async (req: Request, res: Response) => {
     try {
       const teamName = req.params.teamName;
-      const teams = await Team.findAll({where:{team_name:teamName}});
+      const teams = await Team.findOne({where:{team_name:teamName}});
       if(teams){
         res.status(200).json({message:"Name is already taken"});
       }
