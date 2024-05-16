@@ -12,6 +12,7 @@ export const addAndDeleteToATeam = (app: Application) => {
         await EmployeTeam.destroy({where:{team_id:req.params.teamId,employe_id:idsToDelete}});
       }
       if(ids.length > 0){
+        console.log(ids)
         ids.forEach(async id => {
           await EmployeTeam.create({team_id:req.params.teamId,employe_id:id})
         });
