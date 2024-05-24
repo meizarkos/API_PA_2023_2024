@@ -1,5 +1,4 @@
 import { Ticket } from '../../models';
-import { Model } from 'sequelize';
 import { Application, Request, Response } from 'express';
 import { classByOlder } from '../../utils';
 
