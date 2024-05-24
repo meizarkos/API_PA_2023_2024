@@ -31,6 +31,10 @@ export const responseModel = (sequelize: Sequelize) => {
             },
             defaultValue : "user",
         },
+        creator_id:{
+            type: DataTypes.UUID,
+            allowNull : false
+        },
         ticket_id:{
             type: DataTypes.UUID,
             allowNull : false
