@@ -5,7 +5,7 @@ import { classByOlder } from '../../utils';
 export const banCompanies = (app: Application) => {
   app.get('/banCompanies', async (req: Request, res: Response) => {
     try {
-      const responseA = await Company.findAll({where: {role:"ban"}});
+      const responseA = await Company.findAll({where: {role: "ban"},attributes: { exclude: ["password"] }});
       const companies = classByOlder(responseA);
       res.status(200).json(companies);
     } catch (e: unknown) {
