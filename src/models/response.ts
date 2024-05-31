@@ -20,6 +20,21 @@ export const responseModel = (sequelize: Sequelize) => {
                 }
             }
         },
+        status:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: {
+                    args: [0, 40],
+                    msg: "Status must be less than 40 characters"
+                }
+            },
+            defaultValue : "user",
+        },
+        creator_id:{
+            type: DataTypes.UUID,
+            allowNull : false
+        },
         ticket_id:{
             type: DataTypes.UUID,
             allowNull : false
