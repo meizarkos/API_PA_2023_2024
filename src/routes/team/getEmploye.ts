@@ -5,7 +5,7 @@ export const getAllEmployeeFromATeam = (app: Application) => {
   app.get('/employeTeam/:teamId', async (req: Request, res: Response) => {
     try {
       const employeTeams = await EmployeTeam.findAll({where:{employe_id:req.params.teamId}})
-      const employeIds = employeTeams.map(employeTeam => employeTeam.getDataValue('employeId'));
+      const employeIds = employeTeams.map(employeTeam => employeTeam.getDataValue('employe_id'));
       const employes = await Employe.findAll({ where: { uuid: employeIds } });
       res.status(200).json(employes);
     } catch (e: unknown) {
