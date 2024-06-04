@@ -20,7 +20,7 @@ async function login(req:Request,res:Response,model :ModelStatic<Model<any, any>
             }
 
             const token = res.jwt({role: valeur.getDataValue('role'), id: valeur.getDataValue('uuid')})
-            res.status(200).send({ message: "Connecté", token:token.token });
+            res.status(200).send({ message: "Connecté", token:token.token,id:valeur.getDataValue('uuid')});
         } catch (e: unknown) {
             res.status(500).send({ error: "Internal server error"});
         }

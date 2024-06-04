@@ -22,7 +22,7 @@ async function register(req:Request,res:Response,model :ModelStatic<Model<any, a
         })
 
         const token = res.jwt({role: valeur.getDataValue('role'), id: valeur.getDataValue('uuid')})
-        res.status(200).send({ message: "Créer", token:token.token,valeur });
+        res.status(200).send({ message: "Créer", token:token.token,id:valeur.getDataValue('uuid') });
     } catch (e: unknown) {
         const attributes = Object.keys(model.getAttributes());
 
