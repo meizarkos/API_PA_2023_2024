@@ -3,7 +3,7 @@ import { Ticket } from '../../models';
 import { UniqueConstraintError, ValidationError } from 'sequelize';
 import { getAllErrors } from '../../utils';
 
-export const createRoute = (app: Application) => {
+export const createTicket = (app: Application) => {
   app.post("/postTicket", async (req: Request, res: Response) => {
       try {
           req.body.creator_id = req.jwt.payload.id;
