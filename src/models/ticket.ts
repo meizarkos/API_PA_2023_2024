@@ -43,6 +43,10 @@ export const ticketModel = (sequelize: Sequelize) => {
         creator_id:{
             type: DataTypes.UUID,
             allowNull:false
+        },
+        solver_id:{
+            type: DataTypes.UUID,
+            allowNull:true
         }
     });
 };
