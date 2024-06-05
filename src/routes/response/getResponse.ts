@@ -5,7 +5,7 @@ import { classByOlder } from '../../utils';
 export const get_response_of_a_ticket= (app: Application) => {
   app.get('/responseTicket/:ticketId', async (req: Request, res: Response) => {
     try {
-      const responseA = await ResponseModel.findAll({where: {ticketId: req.params.ticketId}});
+      const responseA = await ResponseModel.findAll({where: {ticket_id: req.params.ticketId}});
       const response = classByOlder(responseA);
       res.status(200).json(response);
     } catch (e: unknown) {
