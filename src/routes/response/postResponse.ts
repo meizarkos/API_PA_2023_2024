@@ -1,9 +1,8 @@
 import { Response as ResponseModel} from '../../models';
 import { Application, Request, Response } from 'express';
-import { classByOlder } from '../../utils';
 
 export const postATicket= (app: Application) => {
-  app.get('/responseAdmin/:ticketId', async (req: Request, res: Response) => {
+  app.post('/responseAdmin/:ticketId', async (req: Request, res: Response) => {
     try {
       req.body.ticket_id = req.params.ticketId;
       req.body.creator_id = req.jwt.payload.id;
