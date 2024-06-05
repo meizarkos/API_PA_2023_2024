@@ -3,7 +3,7 @@ import { Application, Request, Response } from 'express';
 import { classByOlder } from '../../utils';
 
 export const solvedTicketsId = (app: Application) => {
-  app.get('/tickets', async (req: Request, res: Response) => {
+  app.get('/ticketsSolved', async (req: Request, res: Response) => {
     try {
       const tickets1 = await Ticket.findAll({where: {creator_id: req.jwt.payload.id}});
       const tickets = classByOlder(tickets1)
