@@ -23,6 +23,7 @@ export const unsolvedTickets = (app: Application) => {
       res.status(200).json(tickets);
     } catch (e: unknown) {
       res.status(500).send({ error: "Internal server error" });
+      console.log(e);
     }
   });
 }
