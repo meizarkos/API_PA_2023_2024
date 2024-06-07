@@ -24,7 +24,7 @@ async function patch(res:Response,req:Request,config:CrudAdmin,id:Identifier){
             res.status(404).json({ message: `Item not found in ${config.route}` });
             return;
         }
-
+        console.log(req.body)
         await config.model.update(req.body, { where: { uuid: id } });
         res.status(200).json({ message: `Item updated in ${config.route}` });
     } catch (e: unknown) {
