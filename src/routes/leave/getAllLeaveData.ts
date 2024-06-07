@@ -9,8 +9,9 @@ export const pendingLeaveAllData = (app: Application) => {
       const responseA = await Leave.findAll({where: {status: "pending"}});
       const responseB = await Promise.all(responseA.map(async (leave) => {
         const employe = await Employe.findOne({where: {uuid: leave.getDataValue('id_employe')}});
-        const Employeteam = await EmployeTeam.findOne({where: {employe_id: employe.getDataValue('uuid')}});
-        const team = await Team.findAll({where: {uuid: Employeteam.getDataValue('team_id')}});
+        const Employeteam = await EmployeTeam.findAll({where: {employe_id: employe.getDataValue('uuid')}});
+        const AllTeamId = Employeteam.map((team) => team.getDataValue('team_id'));
+        const team = await Team.findAll({where: {uuid: AllTeamId}});
         return {leave, employe, team};
       }))
       res.status(200).json(responseB);
