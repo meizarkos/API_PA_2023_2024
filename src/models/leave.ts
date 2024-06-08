@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
+import { Employe } from './employe';
 
 export const LeaveModel = (sequelize: Sequelize) => {
     return sequelize.define('Leave', {

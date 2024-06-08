@@ -6,7 +6,7 @@ import { ValidationError, UniqueConstraintError } from 'sequelize';
 export const createRoute = (app: Application) => {
     app.post('/postLeave', async (req: Request, res: Response) => {
         try {
-            req.body.id_employe = req.jwt.payload.id;
+            req.body["id_employe"] = req.jwt.payload.id;
             const newItem = await Leave.create(req.body);
             res.status(201).json({ message: `New item created in leavePost`, item: newItem });
             

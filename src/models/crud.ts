@@ -1,12 +1,12 @@
 import { Model, ModelStatic } from 'sequelize';
 import * as models from './index';
-import e from 'express';
 
 export type CrudAdmin = {
     model: ModelStatic<Model<any, any>>;
     route: string;
     forbidden: Array<string>;
     noReturn?: Array<string>;
+    champNameToFillWithTokenId?: any;
 };
 
 export const company: CrudAdmin = {
@@ -69,7 +69,8 @@ export const invite: CrudAdmin = {
 export const leave: CrudAdmin = {
     model: models.Leave,
     route: '/leave',
-    forbidden: ['uuid']
+    forbidden: ['uuid'],
+    champNameToFillWithTokenId: 'id_employe'
 }
 
 export const assignation: CrudAdmin = {
