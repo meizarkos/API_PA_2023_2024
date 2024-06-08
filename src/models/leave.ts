@@ -12,6 +12,10 @@ export const LeaveModel = (sequelize: Sequelize) => {
         id_employe: {
             type: DataTypes.UUID,
             allowNull: false,
+            references: {
+                model: Employe,
+                key: 'uuid'
+            },
         },
         start_date: {
             type: DataTypes.DATE,
@@ -40,5 +44,6 @@ export const LeaveModel = (sequelize: Sequelize) => {
 
 export const Leave = LeaveModel(sequelize);
 
+
 Leave.belongsTo(Employe, { foreignKey: 'id_employe'});
-Employe.hasMany(Leave, { foreignKey: 'id_employe' });
+Employe.hasMany(Leave, { foreignKey: 'id_employe'});
