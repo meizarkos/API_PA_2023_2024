@@ -1,5 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
+import { Employe } from './employe';
+import { Team } from './team';
 
 export const TeamEmployeModel = (sequelize: Sequelize) => {
     return sequelize.define('EmployeTeam', {
@@ -20,3 +22,8 @@ export const TeamEmployeModel = (sequelize: Sequelize) => {
 };
 
 export const EmployeTeam = TeamEmployeModel(sequelize);
+
+EmployeTeam.belongsTo(Employe, { foreignKey: 'employe_id' });
+Employe.hasMany(EmployeTeam, { foreignKey: 'employe_id' });
+EmployeTeam.belongsTo(Team, { foreignKey: 'team_id' });
+Team.hasMany(EmployeTeam, { foreignKey: 'team_id' });

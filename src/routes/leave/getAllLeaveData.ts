@@ -1,6 +1,5 @@
 import { Leave,Employe,Team,EmployeTeam } from '../../models';
 import { Application, Request, Response } from 'express';
-import { team, employe } from '../../models/crud';
 
 
 export const pendingLeaveAllData = (app: Application) => {
@@ -8,10 +7,8 @@ export const pendingLeaveAllData = (app: Application) => {
     try {
       const responseA = await Leave.findAll({where: {status: "pending"}});
       const responseB = await Promise.all(responseA.map(async (leave) => {
-        const employe = await Employe.findOne({where: {uuid: leave.getDataValue('id_employe')}});
-        const Employeteam = await EmployeTeam.findAll({where: {employe_id: employe.getDataValue('uuid')}});
-        const AllTeamId = Employeteam.map((team) => team.getDataValue('team_id'));
-        const team = await Team.findAll({where: {uuid: AllTeamId}});
+        const employe = await Employe.findOne({where: {uuid: leave.getDataValue('id_employe')}, attributes: {exclude: ['password']}})
+        const team = await EmployeTeam.findAll({where: {employe_id: employe.getDataValue('uuid')}, include: [Team]});
         return {leave, employe, team};
       }))
       res.status(200).json(responseB);
