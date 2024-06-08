@@ -1,6 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
-import { title } from 'process';
 
 export const AnnonceModel = (sequelize: Sequelize) => {
     return sequelize.define('Annonce', {
