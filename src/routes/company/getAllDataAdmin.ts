@@ -1,9 +1,8 @@
 import { Company,Ticket,Leave, Employe } from '../../models';
 import { Application, Request, Response } from 'express';
-import { employe } from '../../models/crud';
 
 export const allAdminData = (app: Application) => {
-  app.get('/banCompanies', async (req: Request, res: Response) => {
+  app.get('/allAdminData', async (req: Request, res: Response) => {
     try {
       const companies = await Company.findAll({where: {role: "ban"},attributes: { exclude: ["password"] }});
       const employes = await Employe.findAll();
