@@ -1,6 +1,6 @@
 import { Employe,EmployeTeam } from '../../models';
 import { Application, Request, Response } from 'express';
-import { employe } from '../../models/crud';
+import { employe, team } from '../../models/crud';
 
 export const addAndDeleteToATeam = (app: Application) => {
   app.post('/employeTeam/:teamId', async (req: Request, res: Response) => {
@@ -15,7 +15,7 @@ export const addAndDeleteToATeam = (app: Application) => {
       if(ids.length > 0){
         ids.forEach(async id => {
           if(id == "") return
-          if(await EmployeTeam.findOne({where:{employe_id:id}}) === null){
+          if(await EmployeTeam.findOne({where:{employe_id:id,team_id:req.params.teamId}}) === null){
             await EmployeTeam.create({team_id:req.params.teamId,employe_id:id})
           }
         });
