@@ -13,7 +13,10 @@ export const addAndDeleteToATeam = (app: Application) => {
       }
       if(ids.length > 0){
         ids.forEach(async id => {
-          await EmployeTeam.create({team_id:req.params.teamId,employe_id:id})
+          if(id == "") return
+          if(await Employe.findOne({where:{uuid:id}}) === null){
+            await EmployeTeam.create({team_id:req.params.teamId,employe_id:id})
+          }
         });
       }
       

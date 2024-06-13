@@ -13,18 +13,18 @@ export const TeamEmployeModel = (sequelize: Sequelize) => {
         team_id: {
             type: DataTypes.UUID,
             allowNull:false,
-            // references: {
-            //     model: Team,
-            //     key: 'uuid'
-            // },
+            references: {
+                model: Team,
+                key: 'uuid'
+            },
         },
         employe_id: {
             type: DataTypes.UUID,
             allowNull:false,
-            // references: { //pour faire la relation
-            //     model: Employe,
-            //     key: 'uuid'
-            // },
+            references: { //pour faire la relation
+                model: Employe,
+                key: 'uuid'
+            },
         }
     });
 };
