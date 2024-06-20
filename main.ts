@@ -6,7 +6,7 @@ import { errorHandler } from "./src/utils";
 import { keyToken } from "./src/utils";
 import * as routes from './src/routes';
 import * as cruds from './src/models/crud';
-import { patchRoute, createRoute, getAllRoute, getRoute, deleteRoute, createRouteId} from './src/routes/crud';
+import { patchRoute, createRoute, getAllRoute, getRoute, deleteRoute, createRouteId, getByIdInToken} from './src/routes/crud';
 
 startOfDatabase();
 
@@ -29,6 +29,7 @@ Object.keys(cruds).forEach((key) => {
   createRouteId(app, cruds[key]);
   getAllRoute(app, cruds[key]);
   getRoute(app, cruds[key]);
+  getByIdInToken(app, cruds[key]);
   deleteRoute(app, cruds[key]);
 });
 
