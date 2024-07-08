@@ -7,6 +7,7 @@ export type CrudAdmin = {
     forbidden: Array<string>;
     noReturn?: Array<string>;
     champNameToFillWithTokenId?: any;
+    champNameToFindById?: any;
 };
 
 export const company: CrudAdmin = {
