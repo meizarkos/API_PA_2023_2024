@@ -107,7 +107,8 @@ export const avis: CrudAdmin = {
 export const annonce: CrudAdmin = {
     model: models.Annonce,
     route: '/annonce',
-    forbidden: ['uuid']
+    forbidden: ['uuid'],
+    champNameToFillWithTokenId: 'company_id'
 }
 
 export const offer: CrudAdmin = {
