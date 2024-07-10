@@ -8,6 +8,10 @@ export const ConversationModel = (sequelize: Sequelize) => {
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
         },
+        first_conv_id:{ //to find the first conversation and the following one
+            type: DataTypes.UUID,
+            allowNull: false,
+        },
         sender_id:{
             type: DataTypes.UUID,
             allowNull: false,
@@ -31,6 +35,11 @@ export const ConversationModel = (sequelize: Sequelize) => {
                   msg: "It must be less than 1000 characters"
               },
             }
+        },
+        isFirst:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         },
     });
 };
