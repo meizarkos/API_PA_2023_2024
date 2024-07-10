@@ -18,7 +18,7 @@ async function createFunctionId(req: Request, res: Response, config: CrudAdmin) 
             return;
         }
 
-        if(config.champNameToFillWithTokenId){
+        if(config.champNameToFillWithTokenId !== undefined){
             req.body[config.champNameToFillWithTokenId] = req.jwt.payload.id;
         }
 
