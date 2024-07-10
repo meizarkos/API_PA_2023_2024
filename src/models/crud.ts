@@ -108,7 +108,8 @@ export const annonce: CrudAdmin = {
     model: models.Annonce,
     route: '/annonce',
     forbidden: ['uuid'],
-    champNameToFillWithTokenId: "company_id"
+    champNameToFillWithTokenId: "company_id",
+    champNameToFindById: "company_id"
 }
 
 export const offer: CrudAdmin = {
