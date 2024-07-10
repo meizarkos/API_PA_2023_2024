@@ -2,6 +2,7 @@ import { Application, Request, Response } from 'express';
 import { CrudAdmin } from '../../models/crud';
 import { getAllErrors } from '../../utils';
 import { ValidationError, UniqueConstraintError } from 'sequelize';
+import { log } from 'console';
 
 
 async function createFunctionId(req: Request, res: Response, config: CrudAdmin) {
@@ -19,6 +20,8 @@ async function createFunctionId(req: Request, res: Response, config: CrudAdmin) 
         }
 
         if(config.champNameToFillWithTokenId !== undefined){
+            console.log(req.jwt.payload.id);
+            console.log(config.champNameToFillWithTokenId);
             req.body[config.champNameToFillWithTokenId] = req.jwt.payload.id;
         }
 
