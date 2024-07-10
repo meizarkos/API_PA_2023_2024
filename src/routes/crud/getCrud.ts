@@ -61,7 +61,10 @@ export const getByIdInToken = (app: Application, config: CrudAdmin) => {
 
             const champAsPrimaryKey = config.champNameToFindById;
 
-            const item = await config.model.findAll({where:{champAsPrimaryKey:req.jwt.payload.id}});
+            const whereClause = {};
+            whereClause[champAsPrimaryKey] = req.jwt.payload.id;
+
+            const item = await config.model.findAll({where:whereClause});
 
             if (!item) {
                 res.status(404).json({ message: `Item not found in ${config.route}` });
