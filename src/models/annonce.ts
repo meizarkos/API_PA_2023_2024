@@ -24,6 +24,18 @@ export const AnnonceModel = (sequelize: Sequelize) => {
               },
             }
         },
+        description:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                notEmpty: { msg: "A description is required" },
+                notNull: { msg: "A description is required" },
+                len: {
+                  args: [0, 2500],
+                  msg: "Description must be less than 2500 characters"
+              },
+            }
+        },
         type:{
             type: DataTypes.STRING,
             allowNull: false,
