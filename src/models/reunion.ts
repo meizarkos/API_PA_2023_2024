@@ -1,5 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
+import { Employe } from './employe';
+
 
 export const MeetingModel = (sequelize: Sequelize) => {
     return sequelize.define('Meeting', {
@@ -38,6 +40,14 @@ export const MeetingModel = (sequelize: Sequelize) => {
                 notEmpty: { msg: "End time is required" },
                 notNull: { msg: "End time is required" },
             }
+        },
+        employe_id: {
+            type: DataTypes.UUID,
+            allowNull:false,
+            references: { //pour faire la relation
+                model: Employe,
+                key: 'uuid'
+            },
         }
     });
 };
