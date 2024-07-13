@@ -24,6 +24,14 @@ export const MeetingModel = (sequelize: Sequelize) => {
                 },
             }
         },
+        planification: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            validate: {
+                notEmpty: { msg: "Date time is required" },
+                notNull: { msg: "Date time is required" }
+            }
+        },
         start_time: {
             type: DataTypes.DATE,
             allowNull: false,
