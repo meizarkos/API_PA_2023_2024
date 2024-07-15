@@ -52,7 +52,7 @@ export const MeetingModel = (sequelize: Sequelize) => {
         employe_id: {
             type: DataTypes.UUID,
             allowNull:false,
-            references: { //pour faire la relation
+            references: { 
                 model: Employe,
                 key: 'uuid'
             },
