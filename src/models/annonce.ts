@@ -59,7 +59,7 @@ export const AnnonceModel = (sequelize: Sequelize) => {
             }
         },
         price:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false,
             validate: {
                 notEmpty: { msg: "A price is required" },
