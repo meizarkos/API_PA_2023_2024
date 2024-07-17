@@ -12,7 +12,15 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
         else{
           newItem = await Conversation.findAll({where:{target_id:req.jwt.payload.id,isFirst:true}});
         }
-        return res.status(200).json(newItem);
+        const latestConv = newItem.map(async (conv) => {
+          const allConvFromOne = await Conversation.findAll({where:{first_conv_id:conv.getDataValue("uuid")}});
+          if(allConvFromOne.length == 0){
+             return conv;
+          }
+          const allConvByOlder = classByOlder(allConvFromOne);
+          return allConvByOlder[allConvByOlder.length-1];
+        });
+        return res.status(200).json(latestConv);
       } catch (e: unknown) {
           console.error(e); // Log the error for server-side inspection
           res.status(500).json({ error: "Error in the server", message: 'Error creating new item.' });
