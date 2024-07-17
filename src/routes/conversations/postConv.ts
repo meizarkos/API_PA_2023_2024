@@ -7,7 +7,7 @@ import { getAllErrors } from '../../utils';
 async function createConv(route:String,isUser:Boolean,app: Application){
   app.post(`${route}/:convId/:annonceId`,async (req: Request, res: Response) => {
     try {
-      var convStarter = Conversation.findOne({where:{uuid:req.params.convId}});
+      let convStarter = Conversation.findOne({where:{uuid:req.params.convId}});
       req.body.annonce_id = req.params.annonceId;
       req.body.first_conv_id = req.params.convId;
       if(isUser){

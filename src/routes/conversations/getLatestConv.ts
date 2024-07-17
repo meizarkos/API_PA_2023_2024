@@ -5,7 +5,7 @@ import { classByOlder } from '../../utils';
 async function getFirstConvFunction(isUser:Boolean,route:String,app: Application){
   app.get(`${route}`,async (req: Request, res: Response) => {
       try {
-        var newItem;
+        let newItem;
         if(isUser){
           newItem = await Conversation.findAll({where:{sender_id:req.jwt.payload.id,isFirst:true}});
         }
