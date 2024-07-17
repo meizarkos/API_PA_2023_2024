@@ -5,3 +5,4 @@ export * from './company';
 export * from './team';
 export * from './employe'
 export * from './leave';
+export * from './conversations';

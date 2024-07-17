@@ -10,7 +10,7 @@ export const ConversationModel = (sequelize: Sequelize) => {
         },
         first_conv_id:{ //to find the first conversation and the following one
             type: DataTypes.UUID,
-            allowNull: false,
+            allowNull: true,
         },
         sender_id:{
             type: DataTypes.UUID,
