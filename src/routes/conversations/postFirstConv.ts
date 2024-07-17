@@ -1,14 +1,17 @@
 import { Application, Request, Response } from 'express';
-import { Conversation} from '../../models';
+import { Annonce, Conversation} from '../../models';
 import { UniqueConstraintError, ValidationError } from 'sequelize';
 import { getAllErrors } from '../../utils';
 
 export const createFirstConv = (app: Application) => {
-  app.post("/postFirstConvClient",async (req: Request, res: Response) => {
+  app.post("/postFirstConvClient/:annonceId",async (req: Request, res: Response) => {
       try {
+          var targetId = (await Annonce.findOne({where:{uuid:req.params.annonceId}})).getDataValue("company_id");
+          req.body.annonce_id = req.params.annonceId;
           req.body.first_conv_id = null;
           req.body.isFirst = true;
           req.body.sender_id = req.jwt.payload.id;
+          req.body.target_id = targetId;
           const newItem = await Conversation.create(req.body);
           res.status(201).json({ message: `New item created`, item: newItem });
       } catch (e: unknown) {
