@@ -5,14 +5,18 @@ import { getAllErrors } from '../../utils';
 
 
 async function createConv(route:String,isUser:Boolean,app: Application){
-  app.post(`${route}/:convId`,async (req: Request, res: Response) => {
+  app.post(`${route}/:convId/:annonceId`,async (req: Request, res: Response) => {
     try {
+      var convStarter = Conversation.findOne({where:{uuid:req.params.convId}});
+      req.body.annonce_id = req.params.annonceId;
       req.body.first_conv_id = req.params.convId;
       if(isUser){
         req.body.sender_id = req.jwt.payload.id;
+        req.body.target_id = (await convStarter).getDataValue("target_id");
       }
       else{
         req.body.target_id = req.jwt.payload.id;
+        req.body.sender_id = (await convStarter).getDataValue("sender_id");
       }
       const newItem = await Conversation.create(req.body);
       res.status(201).json({ message: `New item created`, item: newItem });
