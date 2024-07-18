@@ -5,14 +5,14 @@ import { classByOlder } from '../../utils';
 async function getFirstConvFunction(isUser:Boolean,route:String,app: Application){
   app.get(`${route}`,async (req: Request, res: Response) => {
       try {
-        let newItem;
+        let allFirstConv;
         if(isUser){
-          newItem = await Conversation.findAll({where:{sender_id:req.jwt.payload.id,isFirst:true}});
+          allFirstConv = await Conversation.findAll({where:{sender_id:req.jwt.payload.id,isFirst:true}});
         }
         else{
-          newItem = await Conversation.findAll({where:{target_id:req.jwt.payload.id,isFirst:true}});
+          allFirstConv = await Conversation.findAll({where:{target_id:req.jwt.payload.id,isFirst:true}});
         }
-        const latestConv = await Promise.all(newItem.map(async (conv) => {
+        const latestConv = await Promise.all(allFirstConv.map(async (conv) => {
             const annonce = await Annonce.findOne({where:{uuid:conv.getDataValue("annonce_id")}});
             const allConvFromOne = await Conversation.findAll({where:{first_conv_id:conv.getDataValue("uuid")}});
             if(allConvFromOne.length == 0){
