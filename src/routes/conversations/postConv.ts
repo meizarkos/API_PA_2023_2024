@@ -36,7 +36,7 @@ async function createConv(route:String,isUser:Boolean,app: Application){
 }
 
 export const createConvClient = (app: Application) => {
-  createConv("/postConvClient",true,app)
+  createConv("/postConvUser",true,app)
 };
 
 export const createConvCompany = (app: Application) => {
