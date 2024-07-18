@@ -4,7 +4,7 @@ import { UniqueConstraintError, ValidationError } from 'sequelize';
 import { getAllErrors } from '../../utils';
 
 export const createFirstConv = (app: Application) => {
-  app.post("/postFirstConvClient/:annonceId",async (req: Request, res: Response) => {
+  app.post("/postFirstConvUser/:annonceId",async (req: Request, res: Response) => {
       try {
           const targetId = (await Annonce.findOne({where:{uuid:req.params.annonceId}})).getDataValue("company_id");
           req.body.annonce_id = req.params.annonceId;
