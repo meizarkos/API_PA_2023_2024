@@ -5,10 +5,10 @@ import { classByOlder } from '../../utils';
 export const getConv = (app: Application) => {
   app.get("/getConv/:convId",async (req: Request, res: Response) => {
       try {
-          const annonce = await Annonce.findOne({where:{uuid:req.params.annonceId}});
           let newItemRes = []
           const oneConv = await Conversation.findOne({where:{uuid:req.params.convId}});
           const allConv = await Conversation.findAll({where:{first_conv_id:req.params.convId}});
+          const annonce = await Annonce.findOne({where:{uuid:oneConv.getDataValue("annonce_id")}});
           newItemRes.push(oneConv);
           newItemRes = newItemRes.concat(allConv);
           const newItemByOlder = classByOlder(newItemRes);
