@@ -9,7 +9,7 @@ export const noConvVerifClient = (app: Application) => {
         return res.status(201).json({convId:firstConvFromUser.getDataValue("uuid")});
       }
       else{
-        return res.status(200).json({message:"You have not started a conversation"});
+        return res.status(200).json({convId:"No id found"});
       }
     } catch (e: unknown) {
         console.error(e); // Log the error for server-side inspection
