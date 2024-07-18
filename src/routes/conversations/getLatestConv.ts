@@ -34,9 +34,9 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
             } else if (latestConversation.getDataValue("sender_id") != req.jwt.payload.id && isUser) {
                 fromValue = "Not you";
             } else if (latestConversation.getDataValue("sender_id") == req.jwt.payload.id && !isUser) {
-                fromValue = "Not you";
-            } else if (latestConversation.getDataValue("sender_id") != req.jwt.payload.id && !isUser) {
                 fromValue = "You";
+            } else if (latestConversation.getDataValue("sender_id") != req.jwt.payload.id && !isUser) {
+                fromValue = "Not you";
             }
 
             let latestConvWithFrom = { ...latestConversation.dataValues, from: fromValue };
