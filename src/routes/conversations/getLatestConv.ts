@@ -16,7 +16,7 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
             const annonce = await Annonce.findOne({where:{uuid:conv.getDataValue("annonce_id")}});
             const allConvFromOne = await Conversation.findAll({where:{first_conv_id:conv.getDataValue("uuid")}});
             if(allConvFromOne.length == 0){
-              let convWithFrom = {...conv}
+              let convWithFrom = {...conv.dataValues};
               if(isUser){
                 convWithFrom.from = "You";
               }
@@ -39,7 +39,7 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
                 fromValue = "You";
             }
 
-            let latestConvWithFrom = { ...latestConversation, from: fromValue };
+            let latestConvWithFrom = { ...latestConversation.dataValues, from: fromValue };
 
             return {annonce:annonce,conversation:latestConvWithFrom};
           })); 
@@ -52,7 +52,7 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
 }
 
 export const getFirstConv = (app: Application) => {
-  getFirstConvFunction(true,"/getFirstConvClient",app);
+  getFirstConvFunction(true,"/getFirstConvUser",app);
 };
 
 export const getFirstConvCompany = (app: Application) => {

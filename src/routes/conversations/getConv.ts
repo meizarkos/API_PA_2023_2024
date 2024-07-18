@@ -20,7 +20,7 @@ export const getConv = (app: Application) => {
                 } else {
                     fromValue = "Not you";
                 }
-                let convWithFromPromise = { ...conv, from: fromValue };
+                let convWithFromPromise = { ...conv.dataValues, from: fromValue };
                 return convWithFromPromise;
           }));
 
