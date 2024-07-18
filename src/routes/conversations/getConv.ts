@@ -13,7 +13,7 @@ export const getConv = (app: Application) => {
           newItemRes = newItemRes.concat(allConv);
           const newItemByOlder = classByOlder(newItemRes);
 
-          const convWithFrom = Promise.all(newItemByOlder.map(async (conv) => {
+          const convWithFrom = await Promise.all(newItemByOlder.map(async (conv) => {
                 let fromValue;
                 if (conv.getDataValue("sender_id") == req.jwt.payload.id) {
                     fromValue = "You";
