@@ -1,7 +1,7 @@
 import {Sequelize} from 'sequelize'
 
 export const sequelize = new Sequelize('promocare','root','', {
-    host: '127.0.0.1',
+    host: '127.0.0.1:3307',
     dialect: 'mariadb',
     define: {
         createdAt: 'created_at',
