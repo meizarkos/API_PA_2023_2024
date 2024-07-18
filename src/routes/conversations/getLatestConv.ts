@@ -1,5 +1,5 @@
 import { Application, Request, Response } from 'express';
-import { Conversation} from '../../models';
+import { Annonce, Conversation} from '../../models';
 import { classByOlder } from '../../utils';
 
 async function getFirstConvFunction(isUser:Boolean,route:String,app: Application){
@@ -13,12 +13,35 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
           newItem = await Conversation.findAll({where:{target_id:req.jwt.payload.id,isFirst:true}});
         }
         const latestConv = await Promise.all(newItem.map(async (conv) => {
+            const annonce = await Annonce.findOne({where:{uuid:conv.getDataValue("annonce_id")}});
             const allConvFromOne = await Conversation.findAll({where:{first_conv_id:conv.getDataValue("uuid")}});
             if(allConvFromOne.length == 0){
-              return conv;
+              let convWithFrom = {...conv}
+              if(isUser){
+                convWithFrom.from = "You";
+              }
+              else{
+                convWithFrom.from = "Not you";
+              }
+              return {annonce:annonce,conversation:convWithFrom}
             }
             const allConvByOlder = classByOlder(allConvFromOne);
-            return allConvByOlder[allConvByOlder.length-1];
+            const latestConversation = allConvByOlder[allConvByOlder.length-1];
+
+            let fromValue;
+            if (latestConversation.getDataValue("sender_id") == req.jwt.payload.id && isUser) {
+                fromValue = "You";
+            } else if (latestConversation.getDataValue("sender_id") != req.jwt.payload.id && isUser) {
+                fromValue = "Not you";
+            } else if (latestConversation.getDataValue("sender_id") == req.jwt.payload.id && !isUser) {
+                fromValue = "Not you";
+            } else if (latestConversation.getDataValue("sender_id") != req.jwt.payload.id && !isUser) {
+                fromValue = "You";
+            }
+
+            let latestConvWithFrom = { ...latestConversation, from: fromValue };
+
+            return {annonce:annonce,conversation:latestConvWithFrom};
           })); 
         return res.status(200).json(latestConv);
       } catch (e: unknown) {
