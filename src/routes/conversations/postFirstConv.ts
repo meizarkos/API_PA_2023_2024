@@ -6,7 +6,8 @@ import { getAllErrors } from '../../utils';
 export const createFirstConv = (app: Application) => {
   app.post("/postFirstConvUser/:annonceId",async (req: Request, res: Response) => {
       try {
-          const targetId = (await Annonce.findOne({where:{uuid:req.params.annonceId}})).getDataValue("company_id");
+          const annonceFromUrl = await Annonce.findOne({where:{uuid:req.params.annonceId}});
+          const targetId = await annonceFromUrl.getDataValue("company_id");
           req.body.annonce_id = req.params.annonceId;
           req.body.first_conv_id = null;
           req.body.isFirst = true;
