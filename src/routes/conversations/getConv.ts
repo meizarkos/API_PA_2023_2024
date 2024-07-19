@@ -5,6 +5,7 @@ import { classByOlder } from '../../utils';
 export const getConv = (app: Application) => {
   app.get("/getConv/:convId",async (req: Request, res: Response) => {
       try {
+          console.log(req.params.convId);
           let newItemRes = []
           const oneConv = await Conversation.findOne({where:{uuid:req.params.convId}});
           const allConv = await Conversation.findAll({where:{first_conv_id:req.params.convId}});
