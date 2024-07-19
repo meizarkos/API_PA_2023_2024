@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 
 export const CompanyModel = (sequelize: Sequelize) => {
-    return sequelize.define('Companie', {
+    return sequelize.define('companie', {
         //User donne users in db
         uuid: {
             type: DataTypes.UUID,

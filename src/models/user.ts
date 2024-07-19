@@ -3,7 +3,7 @@ import { sequelize } from '../utils/db_handler';
 import { Ticket } from './ticket';
 
 export const UserModel = (sequelize: Sequelize) => {
-    return sequelize.define('User', {
+    return sequelize.define('user', {
         //User donne users in db
         uuid: {
             type: DataTypes.UUID,

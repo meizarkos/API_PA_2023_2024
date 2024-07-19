@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 
 export const OfferModel = (sequelize: Sequelize) => {
-    return sequelize.define('Offer', {
+    return sequelize.define('offer', {
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,

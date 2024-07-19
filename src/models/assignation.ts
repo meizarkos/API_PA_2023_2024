@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 
 export const AssignationModel = (sequelize: Sequelize) => {
-    return sequelize.define('Assignation', {
+    return sequelize.define('assignation', {
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,

@@ -4,7 +4,7 @@ import { Employe } from './employe';
 
 
 export const MeetingModel = (sequelize: Sequelize) => {
-    return sequelize.define('Meeting', {
+    return sequelize.define('meeting', {
         //User donne users in db
         uuid: {
             type: DataTypes.UUID,

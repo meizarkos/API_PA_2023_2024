@@ -5,7 +5,7 @@ import { Employe } from './employe';
 
 
 export const ticketModel = (sequelize: Sequelize) => {
-    return sequelize.define('Ticket', {
+    return sequelize.define('ticket', {
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,

@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
 
 export const InvoiceModel = (sequelize: Sequelize) => {
-    return sequelize.define('Invoice', {
+    return sequelize.define('invoice', {
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,

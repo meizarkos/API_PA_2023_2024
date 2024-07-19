@@ -4,7 +4,7 @@ import { Employe } from './employe';
 import { Team } from './team';
 
 export const TeamEmployeModel = (sequelize: Sequelize) => {
-    return sequelize.define('EmployeTeam', {
+    return sequelize.define('employe_team', {
         uuid: {
             type: DataTypes.UUID,
             primaryKey: true,
