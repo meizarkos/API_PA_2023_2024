@@ -10,7 +10,7 @@ export const loginAdmin = (app: Application) => {
             const user = await Employe.findOne({where:{ email }});
 
             if (!user) {
-                res.status(400).send({ message: "Wrong credentials" });
+                res.status(401).send({ message: "Wrong credentials" });
                 return;
             }
 
