@@ -11,7 +11,7 @@ async function login(req:Request,res:Response,model :ModelStatic<Model<any, any>
             const valeur = await model.findOne({where:{ email }});
 
             if (!valeur) {
-                res.status(400).send({ message: "Wrong credentials" });
+                res.status(401).send({ message: "Wrong credentials" });
                 return;
             }
 
