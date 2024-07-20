@@ -43,7 +43,7 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
 
             return {annonce:annonce,conversation:latestConvWithFrom};
           })); 
-        return res.status(200).json(latestConv);
+        return res.status(200).json({latestConv : latestConv});
       } catch (e: unknown) {
           console.error(e); // Log the error for server-side inspection
           res.status(500).json({ error: "Error in the server", message: 'Error creating new item.' });
