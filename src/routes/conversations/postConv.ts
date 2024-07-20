@@ -7,16 +7,16 @@ import { getAllErrors } from '../../utils';
 async function createConv(route:String,app: Application){
   app.post(`${route}/:firstConvUuid/:annonceId`,async (req: Request, res: Response) => {
     try {
-      let firstConv = Conversation.findOne({where:{uuid:req.params.firstConvUuid}});
+      let firstConv = await Conversation.findOne({where:{uuid:req.params.firstConvUuid}});
       req.body.annonce_id = req.params.annonceId;
       req.body.first_conv_id = req.params.firstConvUuid;
       req.body.sender_id = req.jwt.payload.id;
-      const firstConvSenderId = (await firstConv).getDataValue("sender_id");
+      const firstConvSenderId = await firstConv.getDataValue("sender_id");
       if(firstConvSenderId == req.jwt.payload.id){ //if send by a user
-        req.body.target_id = (await firstConv).getDataValue("target_id");
+        req.body.target_id = await firstConv.getDataValue("target_id");
       }
       else{
-        req.body.target_id = (await firstConv).getDataValue("sender_id");
+        req.body.target_id = await firstConv.getDataValue("sender_id");
       }
       const newItem = await Conversation.create(req.body);
       res.status(201).json({ message: `New item created`, item: newItem });
