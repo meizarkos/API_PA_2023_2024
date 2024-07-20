@@ -1,6 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../utils/db_handler';
-import { Ticket } from './ticket';
 
 export const UserModel = (sequelize: Sequelize) => {
     return sequelize.define('user', {
