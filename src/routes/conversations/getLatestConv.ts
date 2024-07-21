@@ -14,7 +14,7 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
         }
         const latestConv = await Promise.all(allFirstConv.map(async (conv) => {
             const annonce = await Annonce.findOne({where:{uuid:conv.getDataValue("annonce_id")}});
-            if(!annonce){
+            if(annonce == null){
               return
             }
             const allConvFromOne = await Conversation.findAll({where:{first_conv_id:conv.getDataValue("uuid")}});
@@ -44,10 +44,12 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
 
             let latestConvWithFrom = { ...latestConversation.dataValues, from: fromValue };
 
-            console.log(latestConvWithFrom);
+            console.log({annonce:annonce,conversation:latestConvWithFrom});
 
             return {annonce:annonce,conversation:latestConvWithFrom};
           })); 
+
+        console.log({latestConv:latestConv});  
         return res.status(200).json({latestConv : latestConv});
       } catch (e: unknown) {
           console.error(e); // Log the error for server-side inspection
