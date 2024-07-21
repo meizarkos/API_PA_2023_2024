@@ -16,7 +16,7 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
             const annonce = await Annonce.findOne({where:{uuid:conv.getDataValue("annonce_id")}});
             console.log(annonce);
             if(!annonce){
-              return null;
+              return
             }
             const allConvFromOne = await Conversation.findAll({where:{first_conv_id:conv.getDataValue("uuid")}});
             if(allConvFromOne.length == 0){
