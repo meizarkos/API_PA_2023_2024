@@ -6,3 +6,4 @@ export * from './team';
 export * from './employe'
 export * from './leave';
 export * from './conversations';
+export * from './offer';
