@@ -1,6 +1,6 @@
 import { Application, Request, Response } from 'express';
-import { Annonce, Offer, User } from '../../models';
-import { offer } from '../../models/crud';
+import { Annonce, Company, Offer, User } from '../../models';
+import { offer, company } from '../../models/crud';
 
 async function getOfferBasedOnStatusUser(app:Application,status:String,route:String){
   app.get(`${route}`, async (req: Request, res: Response) => {
@@ -10,9 +10,12 @@ async function getOfferBasedOnStatusUser(app:Application,status:String,route:Str
           const offerWithStatusFromCompany = await Promise.all(offerWithStatus.map(async (offer) => {
               const user = await User.findOne({where:{uuid:offer.getDataValue('user_id')}});
               const annonces = await Annonce.findOne({where:{uuid:offer.getDataValue('annonce_id')}});
+
+              const companyId = await annonces.getDataValue('company_id');
+              const company = await Company.findOne({where:{uuid:companyId}});
             
               if(user.getDataValue('uuid') === req.jwt.payload.id){
-                  return {offer:offer, user:user , annonce:annonces};
+                  return {offer:offer, company:company , annonce:annonces};
               }
           }));
           res.status(200).json({offers : offerWithStatusFromCompany});
