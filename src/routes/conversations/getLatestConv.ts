@@ -44,7 +44,6 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
             return {annonce:annonce,conversation:latestConvWithFrom};
           })); 
 
-        console.log({latestConv:latestConv});  
         return res.status(200).json({latestConv : latestConv});
       } catch (e: unknown) {
           console.error(e); // Log the error for server-side inspection
