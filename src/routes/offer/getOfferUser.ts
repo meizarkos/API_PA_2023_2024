@@ -6,8 +6,6 @@ async function getOfferBasedOnStatusUser(app:Application,status:String,route:Str
       try {
           const offerWithStatus = await Offer.findAll({where:{status:status}});
 
-          console.log(route)
-
           const offerWithStatusFromCompany = await Promise.all(offerWithStatus.map(async (offer) => {
               const user = await User.findOne({where:{uuid:offer.getDataValue('user_id')}});
               const annonces = await Annonce.findOne({where:{uuid:offer.getDataValue('annonce_id')}});
