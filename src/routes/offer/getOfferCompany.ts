@@ -11,7 +11,7 @@ async function getOfferBasedOnStatus(app:Application,status:String,route:String)
                 const annonce = await Annonce.findOne({where:{uuid:offer.getDataValue('annonce_id')}});
                 const company = await Company.findOne({where:{uuid:annonce.getDataValue('company_id')}});
                 if(company.getDataValue('uuid') === req.jwt.payload.id){
-                    return offer;
+                    return {offer:offer, company:company , annonce:annonce};
                 }
             }));
             res.status(200).json({offer : offerWithStatusFromCompany});
