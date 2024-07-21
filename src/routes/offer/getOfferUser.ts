@@ -15,7 +15,7 @@ async function getOfferBasedOnStatusUser(app:Application,status:String,route:Str
                   return {offer:offer, user:user , annonce:annonces};
               }
           }));
-          res.status(200).json({offer : offerWithStatusFromCompany});
+          res.status(200).json({offers : offerWithStatusFromCompany});
       } catch (e: unknown) {
           console.error(e); // Log the error for server-side inspection
           res.status(500).json({ error: "Error in the server", message: 'Error getting items.' });
