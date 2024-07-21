@@ -14,6 +14,7 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
         }
         const latestConv = await Promise.all(allFirstConv.map(async (conv) => {
             const annonce = await Annonce.findOne({where:{uuid:conv.getDataValue("annonce_id")}});
+            console.log(annonce);
             const allConvFromOne = await Conversation.findAll({where:{first_conv_id:conv.getDataValue("uuid")}});
             if(allConvFromOne.length == 0){
               let convWithFrom = {...conv.dataValues};
