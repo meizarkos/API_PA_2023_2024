@@ -41,9 +41,6 @@ async function getFirstConvFunction(isUser:Boolean,route:String,app: Application
             }
 
             let latestConvWithFrom = { ...latestConversation.dataValues, from: fromValue };
-
-            console.log({annonce:annonce,conversation:latestConvWithFrom});
-
             return {annonce:annonce,conversation:latestConvWithFrom};
           })); 
 
