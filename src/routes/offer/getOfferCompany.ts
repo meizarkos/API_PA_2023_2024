@@ -7,7 +7,7 @@ async function getOfferBasedOnStatus(app:Application,status:String,route:String)
         try {
             const offerWithStatus = await Offer.findAll({where:{status:status}});
 
-            const offerWithStatusFromCompany = await Promise.all(offerWithStatus.map(async (offer) => {
+            const offerWithStatusFromUser = await Promise.all(offerWithStatus.map(async (offer) => {
                 const annonceId = await offer.getDataValue('annonce_id');
                 const userId = await offer.getDataValue('user_id');
                 const annonce = await Annonce.findOne({where:{uuid:annonceId}});
@@ -17,7 +17,7 @@ async function getOfferBasedOnStatus(app:Application,status:String,route:String)
                     return {offer:offer, user:user , annonce:annonce};
                 }
             }));
-            res.status(200).json({offers : offerWithStatusFromCompany});
+            res.status(200).json({offers : offerWithStatusFromUser});
         } catch (e: unknown) {
             console.error(e); // Log the error for server-side inspection
             res.status(500).json({ error: "Error in the server", message: 'Error getting items.' });
