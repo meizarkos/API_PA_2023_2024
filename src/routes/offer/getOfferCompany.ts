@@ -1,6 +1,5 @@
 import { Application, Request, Response } from 'express';
 import { Annonce, Company, Offer } from '../../models';
-import { company } from '../../models/crud';
 
 
 async function getOfferBasedOnStatus(app:Application,status:String,route:String){
@@ -13,9 +12,7 @@ async function getOfferBasedOnStatus(app:Application,status:String,route:String)
                 console.log(annonceId);
                 const annonce = await Annonce.findOne({where:{uuid:annonceId}});
                 const companyId = await annonce.getDataValue('company_id');
-                console.log(companyId);
                 const company = await Company.findOne({where:{uuid:companyId}});
-                console.log(company.dataValues);
                 if(companyId === req.jwt.payload.id){
                     return {offer:offer, company:company , annonce:annonce};
                 }
