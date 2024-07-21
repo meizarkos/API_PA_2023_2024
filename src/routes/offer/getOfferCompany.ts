@@ -1,5 +1,5 @@
 import { Application, Request, Response } from 'express';
-import { Annonce, Company, Offer } from '../../models';
+import { Annonce, Offer,User } from '../../models';
 
 
 async function getOfferBasedOnStatus(app:Application,status:String,route:String){
@@ -9,12 +9,12 @@ async function getOfferBasedOnStatus(app:Application,status:String,route:String)
 
             const offerWithStatusFromCompany = await Promise.all(offerWithStatus.map(async (offer) => {
                 const annonceId = await offer.getDataValue('annonce_id');
-                console.log(annonceId);
+                const userId = await offer.getDataValue('user_id');
                 const annonce = await Annonce.findOne({where:{uuid:annonceId}});
+                const user = await User.findOne({where:{uuid:userId}});
                 const companyId = await annonce.getDataValue('company_id');
-                const company = await Company.findOne({where:{uuid:companyId}});
                 if(companyId === req.jwt.payload.id){
-                    return {offer:offer, company:company , annonce:annonce};
+                    return {offer:offer, user:user , annonce:annonce};
                 }
             }));
             res.status(200).json({offers : offerWithStatusFromCompany});
