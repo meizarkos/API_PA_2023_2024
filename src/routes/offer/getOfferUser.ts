@@ -1,6 +1,5 @@
 import { Application, Request, Response } from 'express';
 import { Annonce, Company, Offer, User } from '../../models';
-import { offer, company } from '../../models/crud';
 
 async function getOfferBasedOnStatusUser(app:Application,status:String,route:String){
   app.get(`${route}`, async (req: Request, res: Response) => {
@@ -8,6 +7,8 @@ async function getOfferBasedOnStatusUser(app:Application,status:String,route:Str
           const offerWithStatus = await Offer.findAll({where:{status:status}});
 
           const offerWithStatusFromCompany = await Promise.all(offerWithStatus.map(async (offer) => {
+              console.log(offer.getDataValue('user_id'));
+              console.log(offer.getDataValue('annonce_id'));
               const user = await User.findOne({where:{uuid:offer.getDataValue('user_id')}});
               const annonces = await Annonce.findOne({where:{uuid:offer.getDataValue('annonce_id')}});
 
